@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'newspage.html' %}
+	{# Héritage du parent #}
+    {% block damdb %}
+	<div class="adm">
+        <a>Page d'Administration</a>
+    </div>
+    {% endblock %}
+
+    {% block newstitleadmin %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{passnews.id}}'></input>
+        <input type="hidden" name="type" value='title'></input>
+        <input type="text" name="Title" value="{{passnews.title}}"></input>
+        <button type="submit" name="Button" value="Send">send</button>
+    </form>
+    {% endblock %}
+    {% block newsdescadmin %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{passnews.id}}'></input>
+        <input type="hidden" name="type" value='description'></input>
+        <textarea row="10" name="Desc" cols="100">{{passnews.description}}</textarea>
+        <button type="submit" name="Button" value="Send">Send</button>
+    </form>
+    {% endblock %}
+</html>

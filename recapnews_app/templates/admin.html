@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+    {% block tabtitle %}
+    <title>Recap News-Admin</title>
+    {% endblock %}
+    {% block content %}
+	{# Héritage du parent #}
+    <body>
+	    <div class="adm">
+            <a>Page d'Administration</a>
+        </div>
+        <a class='myadmin' href="/gamesadmin/">
+            <p>Administration des jeux</p>
+        </a>
+    </body>
+    {% endblock %}
+</html>

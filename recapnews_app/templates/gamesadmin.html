@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'games.html' %}
+
+	{# Héritage du parent #}
+	{% block admheader %}
+    <div class="adm">
+        <a>Page d'Administration</a>
+    </div>
+    {% endblock %}
+
+    {% block admadd %}
+    <div>
+        <form method="POST" class="newspopup">
+            <input type="text" name="Title" id="title">enter title</input>
+            <input type="text" name="Description" id="description">enter description</input>
+            <button type="submit" name="Button" value="submit">send</button>
+        </form>
+    </div>
+	{% endblock %}
+
+	{% block admin %}
+    <button class="delb" type="submit" name="Button" value="delete">delete</button>
+    {% endblock %}
+    {% block adminimage %}
+        <input type="file" name="picture"></input>
+        <input type="submit" name="Button" value="Send"></input>
+    {% endblock %}
+
+    {% block adminarticle %}
+    <div class="adm">
+        <a>Page d'Administration</a>
+    </div>
+    {% endblock %}
+</html>

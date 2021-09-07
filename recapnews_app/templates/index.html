@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+
+	{# Héritage du parent #}
+	{% block content %}
+	{% block admhead %}{% endblock %}
+	<body>
+		{% if name %}
+			<h1>hello {{name}}</h1>
+		{% else %}
+			<h1>Hello World</h1>
+		{% endif %}
+	</body>
+	{% endblock %}
+</html>

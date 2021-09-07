@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+
+	{# Héritage du parent #}
+	{% block content %}
+	<body>
+        {% block adminarticle %}{% endblock %}
+        {% if article != None %}
+        <div>
+            {% block changetitle %}
+            <h1>{{article.title}}</h1>
+            {% endblock %}
+        </div>
+        <div>
+            {% block changedesc %}
+            <p>{{article.description}}</p>
+            {% endblock %}
+        </div>
+        <img src="{{'/static/'+article.path_to_img}}">
+        {% else %}
+        <h1>empty news</h1>
+        {% endif %}
+	</body>
+	{% endblock %}
+</html>

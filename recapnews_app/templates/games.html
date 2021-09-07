@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+    {% block tabtitle %}
+    <title>Recap News-Games</title>
+    {% endblock %}
+	{# Héritage du parent #}
+	{% block content %}
+    {% block admheader %}{% endblock %}
+    {% block admadd %}{% endblock %}
+    <body>
+        <div>
+            <p>Les news !</p>
+                <div class="boxes">
+                {% for i in list %}
+                {% if i.path_to_img == "none"%}
+                    <article class="cards">
+                        <form class="card" method="POST" id={{i.id}}>
+                            <input type="hidden" name="Id" id="Id" value='{{i.id}}'></input>
+                            {% if isadmin == 1 %}
+                            <a class="mylink" href="/game/fiche/admin/?id={{i.id}}"></a>
+                                <h4>{{i.title}}</h4>
+                            </a>
+                            {% else %}
+                            <a class="mylink" href="/game/fiche/?id={{i.id}}"></a>
+                                <h4>{{i.title}}</h4>
+                            </a>
+                            {% endif %}
+                {% else %}
+                    <article class="cards" style="background-image:url({{url_for('static', filename=i.path_to_img)}});background-size: cover;background-position: center;">
+                        <form class="card" method="POST" id={{i.id}}>
+                            <input type="hidden" name="Id" id="Id" value='{{i.id}}'></input>
+                            <div class="titletile">
+                                {% if isadmin == 1 %}
+                                <a class="mylink" href="/game/fiche/admin/?id={{i.id}}">
+                                    <h4 style="background-color: rgba(0, 0, 0, 0.5);">{{i.title}}</h4>
+                                </a>
+                                {% else %}
+                                <a class="mylink" href="/game/fiche/?id={{i.id}}">
+                                    <h4 style="background-color: rgba(0, 0, 0, 0.5);">{{i.title}}</h4>
+                                </a>
+                                {% endif %}
+                            </div>
+                {% endif %}                
+                            {% block admin %}{% endblock %}
+                        </form>
+                        <form method="POST" action="{{url_for('uploader')}}" enctype=multipart/form-data>
+                            <input type="hidden" name="Id" id="Id" value='{{i.id}}'></input>
+                            {% block adminimage %}{% endblock %}
+                        </form>
+                    </article>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    </body>
+    {% endblock %}
+</html>

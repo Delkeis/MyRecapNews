@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'GameTemplate.html' %}
+
+	{# Héritage du parent #}
+	{% block admingame %}
+    <div class="adm">
+        <a>Page d'Administration</a>
+    </div>
+	{% endblock %}
+
+    {% block changetitle %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{game.id}}'></input>
+        <input type="hidden" name="type" value='title'></input>
+        <input type="text" name="Title" value="{{game.title}}"></input>
+        <button type="submit" name="Button" value="Send">send</button>
+    </form>
+    {% endblock %}
+
+    {% block changedesc %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{game.id}}'></input>
+        <input type="hidden" name="type" value='description'></input>
+        <textarea row="10" name="Desc" cols="100">{{game.description}}</textarea>
+        <button type="submit" name="Button" value="Send">Send</button>
+    </form>
+	{% endblock %}
+
+
+    {% block addnews %}
+    <article class="cards">
+        <p>Ajouter un nouvelle news pour le jeu {{game.title}}</p>
+        <form method="POST">
+            <input type="hidden" name="type" value='addnewnews'></input>
+            <input type="text" name="Title" id="title">enter title</input>
+            <input type="text" name="Description" id="description">enter description</input>
+            <button type="submit" name="Button" value="submit">send</button>
+        </form>
+    </article>
+    {% endblock %}
+
+    {% block delnews %}
+    <input type="hidden" name="type" value='delnews'></input>
+    <button type="submit" name="Button" value="submit">Delete</button>
+    {% endblock %}
+
+    {% block modifiernews %}
+    <input type="hidden" name="type" value='modifinews'></input>
+    <button type="submit" name="Button" value="submit">Modifier</button>
+	{% endblock %}
+</html>

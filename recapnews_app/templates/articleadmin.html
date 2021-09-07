@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'ArticleTemplate.html' %}
+
+	{# Héritage du parent #}
+	{% block adminarticle %}
+    <div class="adm">
+        <a>Page d'Administration</a>
+    </div>
+	{% endblock %}
+
+    {% block changetitle %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{article.id}}'></input>
+        <input type="hidden" name="type" value='title'></input>
+        <input type="text" name="Title" value="{{article.title}}"></input>
+        <button type="submit" name="Button" value="Send">send</button>
+    </form>
+    {% endblock %}
+
+    {% block changedesc %}
+    <form method="POST">
+        <input type="hidden" name="Id" id="Id" value='{{article.id}}'></input>
+        <input type="hidden" name="type" value='description'></input>
+        <textarea row="10" name="Desc" cols="100">{{article.description}}</textarea>
+        <button type="submit" name="Button" value="Send">Send</button>
+    </form>
+	{% endblock %}
+</html>

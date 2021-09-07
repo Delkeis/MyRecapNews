@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+    {% block tabtitle %}
+    <title>Recap News-{{game.title}}</title>
+    {% endblock %}
+	{# Héritage du parent #}
+	{% block content %}
+	<body>
+        {% block admingame %}{% endblock %}
+        {% if game != None %}
+        <div>
+            {% block changetitle %}
+            <h1>{{game.title}}</h1>
+            {% endblock %}
+        </div>
+        <div>
+            {% block changedesc %}
+            <p>{{game.description}}</p>
+            {% endblock %}
+        </div>
+        <img src="{{'/static/'+game.path_to_img}}">
+        {% block addnews %}{% endblock %}
+        <div class="boxes">
+        {% for art in gamenews %}
+            <article class="cards">
+                <a href="/news/fiche/?id={{art.id}}">
+                    <h1>{{art.title}}</h1>
+                    <p>{{art.description}}</p>
+                </a>
+                <form method="POST">
+                    <input type="hidden" name="Id" id="Id" value='{{art.id}}'></input>
+                {% block modifiernews %}{% endblock %}
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="Id" id="Id" value='{{art.id}}'></input>
+                {% block delnews %}{% endblock %}
+                </form>
+            </article>
+        {% endfor %}
+        </div>
+        {% else %}
+        <h1>empty news</h1>
+        {% endif %}
+	</body>
+	{% endblock %}
+</html>

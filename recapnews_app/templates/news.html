@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	{% extends 'base.html' %}
+	{% block tabtitle %}
+		<title>Recap News-Home</title>
+	{% endblock %}
+	{# Héritage du parent #}
+	{% block content %}
+	{% block admheader %}{% endblock %}
+	<body>
+		<h2>news</h2>
+	</body>
+	<div class="boxes">
+		{% for i in content %}
+			{% if i.path_to_img != "none" %}
+			<article class="cards" style="background-image:url({{url_for('static', filename=i.path_to_img)}});background-size: cover;background-position: center;">
+			{% else %}
+			<article class="cards">
+			{% endif %}
+				<a href="/news/fiche/?id={{i.id}}">
+					<h1>{{i.gameTitle}}</h1>
+					<h2>{{i.title}}</h2>
+					<p>{{i.release_date}}</p>
+				</a>
+			</article>
+		{% endfor %}
+	</div>
+	{% endblock %}
+</html>

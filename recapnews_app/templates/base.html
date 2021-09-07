@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+        {% block tabtitle %}
+		<title>Recap News</title>
+        {% endblock %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+    <div class="topnav" id="myTopnav">
+        <a href="{{url_for('news')}}" class="active">Home</a>
+        <a href="{{url_for('games')}}">Games</a>
+        <a href="{{url_for('user')}}">User Profile</a>
+    </div>
+    {% block content %}{% endblock %}
+</html>
